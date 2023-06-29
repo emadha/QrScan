@@ -46,9 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController locationLatInputController = TextEditingController(text: "");
 
   /// * Wifi input Controller *
-  final TextEditingController wifiSSIDInputController = TextEditingController(text: "");
+  final TextEditingController wifiNetworkNameInputController = TextEditingController(text: "");
   final TextEditingController wifiPasswordInputController = TextEditingController(text: "");
-  final TextEditingController wifiEncTypeInputController = TextEditingController(text: "");
+  final TextEditingController wifiAuthenticationTypeInputController = TextEditingController(text: "");
+  late bool wifiHiddenNetworkInputController = false;
 
   final TextEditingController finalInputController = TextEditingController(text: "");
 
@@ -56,6 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int selectedType = 0;
 
   final GlobalKey qrKey = GlobalKey();
+
+  final Map<String, String> TYPES_FORMATS = {
+    'WIFI': 'WIFI:S:<network_name>;T:<authentication_type>;P:<password>;H:<hidden_network>',
+  };
 
   final List<String> qrCodeFormats = [
     "URL",
@@ -87,42 +92,98 @@ class _MyHomePageState extends State<MyHomePage> {
   static const int TYPE_TWITTER = 11;
   static const int TYPE_APP = 12;
 
+  void buildQrForWifi(value, String type) {
+    String finalCode = TYPES_FORMATS["WIFI"]!
+        .replaceFirst('S:<network_name>', "S:${wifiNetworkNameInputController.text}")
+        .replaceFirst('T:<authentication_type>', "T:${wifiAuthenticationTypeInputController.text}")
+        .replaceFirst('P:<password>', "P:${wifiPasswordInputController.text}")
+        .replaceFirst('H:<hidden_network>', "H:${wifiHiddenNetworkInputController.toString()}");
+
+    setState(() {
+      print(finalCode);
+      finalInputController.text = finalCode;
+    });
+  }
+
   List<Widget> getInputsForType({required int type}) {
     List<Widget> widgetsList = [];
 
     switch (type) {
       case TYPE_URL:
-        {
-          widgetsList.add(TextFormField(
-            controller: urlInputController,
-            enableSuggestions: true,
-            onChanged: (value) => setState(() {}),
-            decoration:
-                const InputDecoration(labelText: "URL here", hintText: "Enter URL value here", border: OutlineInputBorder(borderSide: BorderSide())),
-            style: const TextStyle(),
-          ));
-          break;
-        }
+        widgetsList.add(TextFormField(
+          controller: urlInputController,
+          enableSuggestions: true,
+          onChanged: (value) => setState(() {}),
+          decoration:
+              const InputDecoration(labelText: "URL here", hintText: "Enter URL value here", border: OutlineInputBorder(borderSide: BorderSide())),
+          style: const TextStyle(),
+        ));
+        break;
+
       case TYPE_WIFI:
-        {
-          widgetsList.add(TextFormField(
-            maxLines: 1,
-            controller: wifiSSIDInputController,
-            onChanged: (value) => setState(() {}),
-            decoration:
-                const InputDecoration(hintText: "SSID (Your network name)", labelText: "SSID", border: OutlineInputBorder(borderSide: BorderSide())),
-            style: const TextStyle(),
-          ));
-          widgetsList.add(const SizedBox(height: 10));
+        widgetsList.add(TextFormField(
+          maxLines: 1,
+          controller: wifiNetworkNameInputController,
+          onChanged: (value) => buildQrForWifi(value, 'network_name'),
+          decoration:
+              const InputDecoration(hintText: "SSID (Your network name)", labelText: "SSID", border: OutlineInputBorder(borderSide: BorderSide())),
+          style: const TextStyle(),
+        ));
+        widgetsList.add(const SizedBox(height: 20));
+        widgetsList.add(
+          DropdownButtonFormField(
+            value: "nopass",
+            decoration: const InputDecoration(
+              labelText: "Encryption Type",
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.white),
+              ),
+            ),
+            items: const [
+              DropdownMenuItem(value: "WPA", child: Text("WPA")),
+              DropdownMenuItem(value: "WPA2", child: Text("WPA2")),
+              DropdownMenuItem(value: "WPA3", child: Text("WPA3")),
+              DropdownMenuItem(value: "nopass", child: Text("No Password")),
+            ],
+            onChanged: (value) {
+              wifiAuthenticationTypeInputController.text = value.toString();
+
+              if (value == "nopass") {
+                wifiPasswordInputController.text = "";
+              }
+
+              buildQrForWifi(value, 'authentication_type');
+            },
+          ),
+        );
+
+        widgetsList.add(const SizedBox(height: 20));
+        if (wifiAuthenticationTypeInputController.text != 'nopass') {
           widgetsList.add(TextFormField(
             controller: wifiPasswordInputController,
-            onChanged: (value) => setState(() {}),
+            onChanged: (value) => buildQrForWifi(value, 'password'),
             decoration: const InputDecoration(hintText: "Password", labelText: "Password", border: OutlineInputBorder(borderSide: BorderSide())),
             style: const TextStyle(),
           ));
-
-          break;
+          widgetsList.add(const SizedBox(height: 20));
         }
+
+        widgetsList.add(
+          SizedBox(
+            child: CheckboxListTile(
+              title: const Text("Is that network hidden?"),
+              value: wifiHiddenNetworkInputController,
+              onChanged: (bool? value) {
+                setState(() {
+                  wifiHiddenNetworkInputController = value!;
+                  buildQrForWifi(value!, 'hidden_network');
+                });
+              },
+            ),
+          ),
+        );
+
+        break;
       case TYPE_PHONE:
         {
           widgetsList.add(TextFormField(
@@ -203,7 +264,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print(qrCodeFormats);
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -254,7 +314,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         return Builder(
                           builder: (BuildContext context) {
                             return Container(
-                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
                                 decoration: BoxDecoration(
                                   color: Theme.of(context).colorScheme.onSecondary,
                                   borderRadius: BorderRadius.circular(5),
