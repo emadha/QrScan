@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -121,6 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
 
       case TYPE_WIFI:
+        widgetsList.add(
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: const Text(
+                "Wifi Format QR Code is a special type of QR Code made for sharing Wifi Credentials with other, an action such as "
+                    "Saving the connection could be available with the scanner to save the connection information."),
+          ),
+        );
         widgetsList.add(TextFormField(
           maxLines: 1,
           controller: wifiNetworkNameInputController,
@@ -186,6 +195,13 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       case TYPE_PHONE:
         {
+          widgetsList.add(
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: const Text("Easily share contacts with QR codes in phone format, Contacts QR Code is made specifically "
+                  "to share contacts by using QR codes, the scanner will contain actions specifically for contacts, such as Call or Save..."),
+            ),
+          );
           widgetsList.add(TextFormField(
             keyboardType: TextInputType.phone,
             controller: phoneInputController,
@@ -199,6 +215,13 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       case TYPE_EMAIL:
         {
+          widgetsList.add(
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: const Text("E-mail QR Code is a shortner for maileto:email, you can use to order the qr scanner apps to run a mailto action."),
+            ),
+          );
+
           widgetsList.add(TextFormField(
             keyboardType: TextInputType.emailAddress,
             controller: emailInputController,
@@ -213,6 +236,13 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       case TYPE_TEXT:
         {
+          widgetsList.add(
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child:
+                  const Text("Create a Raw Text QR Code, Text based QR code is the simplest mode of encryption, it has no features and no actions."),
+            ),
+          );
           widgetsList.add(TextFormField(
             maxLines: 5,
             keyboardType: TextInputType.emailAddress,
@@ -290,9 +320,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   QrImageView(
                     data: finalInputController.text,
                     version: QrVersions.auto,
-                    dataModuleStyle: const QrDataModuleStyle(color: Colors.white70),
-                    eyeStyle: const QrEyeStyle(
-                      color: Colors.white60,
+                    dataModuleStyle: QrDataModuleStyle(
+                      color: Get.isDarkMode ? Colors.white60 : Colors.black87,
+                    ),
+                    eyeStyle: QrEyeStyle(
+                      color: Get.isDarkMode ? Colors.white60 : Colors.black87,
                       eyeShape: QrEyeShape.square,
                     ),
                     gapless: true,
@@ -329,8 +361,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       }).toList(),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  Column(children: getInputsForType(type: selectedType)),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: getInputsForType(type: selectedType),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -339,6 +376,22 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: const BoxDecoration(),
               child: Column(
                 children: [
+                  MaterialButton(
+                    onPressed: () {
+                      print("ok");
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.cloud_download, size: 60, semanticLabel: "cloud icon"),
+                        Text(
+                          "Save",
+                          style: GoogleFonts.aBeeZee(fontSize: 80, fontWeight: FontWeight.w900),
+                        )
+                      ],
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
