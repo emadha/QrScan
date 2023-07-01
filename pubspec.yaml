@@ -38,7 +38,11 @@ dependencies:
   qr_flutter: ^4.1.0
   google_fonts: ^4.0.4
   get: ^4.6.5
-  carousel_slider: ^4.2.1
+  mobile_scanner: ^3.3.0
+  google_maps_flutter: ^2.3.1
+  flutter_native_contact_picker: ^0.0.4
+  path_provider: ^2.0.15
+  share_plus: ^7.0.2
 
 dev_dependencies:
   flutter_test:

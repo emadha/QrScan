@@ -5,7 +5,7 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="21"
 9        android:targetSdkVersion="33" />
 10    <!--
 11         The INTERNET permission is required for development. Specifically,
@@ -15,59 +15,240 @@
 15    <uses-permission android:name="android.permission.INTERNET" />
 15-->X:\Android\QrReadr\android\app\src\debug\AndroidManifest.xml:6:5-66
 15-->X:\Android\QrReadr\android\app\src\debug\AndroidManifest.xml:6:22-64
-16
-17    <application
-18        android:name="android.app.Application"
-19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.6.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\7e9df2ac2213a6bd3cef0f2f27870d79\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
-20        android:debuggable="true"
-21        android:icon="@mipmap/ic_launcher"
-22        android:label="qr_reader" >
-23        <activity
-24            android:name="com.example.qr_reader.MainActivity"
-25            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-26            android:exported="true"
-27            android:hardwareAccelerated="true"
-28            android:launchMode="singleTop"
-29            android:theme="@style/LaunchTheme"
-30            android:windowSoftInputMode="adjustResize" >
-31
-32            <!--
-33                 Specifies an Android theme to apply to this Activity as soon as
-34                 the Android process has started. This theme is visible to the user
-35                 while the Flutter UI initializes. After that, this theme continues
-36                 to determine the Window background behind the Flutter UI.
-37            -->
-38            <meta-data
-39                android:name="io.flutter.embedding.android.NormalTheme"
-40                android:resource="@style/NormalTheme" />
-41
-42            <intent-filter>
-43                <action android:name="android.intent.action.MAIN" />
-44
-45                <category android:name="android.intent.category.LAUNCHER" />
-46            </intent-filter>
-47        </activity>
-48        <!--
-49             Don't delete the meta-data below.
-50             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-51        -->
-52        <meta-data
-53            android:name="flutterEmbedding"
-54            android:value="2" />
-55
-56        <uses-library
-56-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
-57            android:name="androidx.window.extensions"
-57-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
-58            android:required="false" />
-58-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
-59        <uses-library
-59-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
-60            android:name="androidx.window.sidecar"
-60-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
-61            android:required="false" />
-61-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-62    </application>
-63
-64</manifest>
+16    <uses-permission android:name="android.permission.CAMERA" /> <!-- Include required permissions for Google Maps API to run. -->
+16-->[:mobile_scanner] X:\Android\QrReadr\build\mobile_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-65
+16-->[:mobile_scanner] X:\Android\QrReadr\build\mobile_scanner\intermediates\merged_manifest\debug\AndroidManifest.xml:9:22-62
+17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+17-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
+17-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:22-76
+18
+19    <uses-feature
+19-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+20        android:glEsVersion="0x00020000"
+20-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+21        android:required="true" />
+21-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+22
+23    <queries>
+23-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+24
+25        <!-- Needs to be explicitly declared on Android R+ -->
+26        <package android:name="com.google.android.apps.maps" />
+26-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+26-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+27    </queries>
+28
+29    <permission
+29-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+30        android:name="com.example.qr_reader.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+30-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+31        android:protectionLevel="signature" />
+31-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+32
+33    <uses-permission android:name="com.example.qr_reader.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+33-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+33-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+34
+35    <application
+36        android:name="android.app.Application"
+37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+37-->[androidx.core:core:1.9.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\c2aff38445ebad8ddeaa989ecf50f56e\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+38        android:debuggable="true"
+39        android:icon="@mipmap/ic_launcher"
+40        android:label="qr_reader" >
+41        <activity
+42            android:name="com.example.qr_reader.MainActivity"
+43            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+44            android:exported="true"
+45            android:hardwareAccelerated="true"
+46            android:launchMode="singleTop"
+47            android:theme="@style/LaunchTheme"
+48            android:windowSoftInputMode="adjustResize" >
+49
+50            <!--
+51                 Specifies an Android theme to apply to this Activity as soon as
+52                 the Android process has started. This theme is visible to the user
+53                 while the Flutter UI initializes. After that, this theme continues
+54                 to determine the Window background behind the Flutter UI.
+55            -->
+56            <meta-data
+57                android:name="io.flutter.embedding.android.NormalTheme"
+58                android:resource="@style/NormalTheme" />
+59
+60            <intent-filter>
+61                <action android:name="android.intent.action.MAIN" />
+62
+63                <category android:name="android.intent.category.LAUNCHER" />
+64            </intent-filter>
+65        </activity>
+66        <!--
+67             Don't delete the meta-data below.
+68             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+69        -->
+70        <meta-data
+71            android:name="flutterEmbedding"
+72            android:value="2" />
+73        <meta-data
+74            android:name="com.google.android.geo.API_KEY"
+75            android:value="YOUR KEY HERE" />
+76        <!--
+77           Declares a provider which allows us to store files to share in
+78           '.../caches/share_plus' and grant the receiving action access
+79        -->
+80        <provider
+80-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-23:20
+81            android:name="dev.fluttercommunity.plus.share.ShareFileProvider"
+81-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-77
+82            android:authorities="com.example.qr_reader.flutter.share_provider"
+82-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-74
+83            android:exported="false"
+83-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
+84            android:grantUriPermissions="true" >
+84-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-47
+85            <meta-data
+85-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-22:68
+86                android:name="android.support.FILE_PROVIDER_PATHS"
+86-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:21:17-67
+87                android:resource="@xml/flutter_share_file_paths" />
+87-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-65
+88        </provider>
+89        <!--
+90           This manifest declared broadcast receiver allows us to use an explicit
+91           Intent when creating a PendingItent to be informed of the user's choice
+92        -->
+93        <receiver
+93-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:28:9-34:20
+94            android:name="dev.fluttercommunity.plus.share.SharePlusPendingIntent"
+94-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-82
+95            android:exported="false" >
+95-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-37
+96            <intent-filter>
+96-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:31:13-33:29
+97                <action android:name="EXTRA_CHOSEN_COMPONENT" />
+97-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-65
+97-->[:share_plus] X:\Android\QrReadr\build\share_plus\intermediates\merged_manifest\debug\AndroidManifest.xml:32:25-62
+98            </intent-filter>
+99        </receiver>
+100
+101        <uses-library
+101-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+102            android:name="androidx.window.extensions"
+102-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+103            android:required="false" />
+103-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+104        <uses-library
+104-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+105            android:name="androidx.window.sidecar"
+105-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+106            android:required="false" />
+106-->[androidx.window:window:1.0.0-beta04] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\25cee5f028ac2a6b79fd6278ff5b59e2\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+107
+108        <service
+108-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:24:9-33:19
+109            android:name="androidx.camera.core.impl.MetadataHolderService"
+109-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:25:13-75
+110            android:enabled="false"
+110-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:26:13-36
+111            android:exported="false" >
+111-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:27:13-37
+112            <meta-data
+112-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:30:13-32:89
+113                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+113-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:31:17-103
+114                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+114-->[androidx.camera:camera-camera2:1.2.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\109c5c4449370ebca1b110e71c6c792b\transformed\jetified-camera-camera2-1.2.3\AndroidManifest.xml:32:17-86
+115        </service> <!-- Needs to be explicitly declared on P+ -->
+116        <uses-library
+116-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+117            android:name="org.apache.http.legacy"
+117-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+118            android:required="false" />
+118-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\d7f7973f000d5c8945a05a4db1417b66\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+119
+120        <service
+120-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:9:9-15:19
+121            android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService"
+121-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:10:13-91
+122            android:directBootAware="true"
+122-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:17:13-43
+123            android:exported="false" >
+123-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:11:13-37
+124            <meta-data
+124-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:12:13-14:85
+125                android:name="com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar"
+125-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:13:17-120
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.android.gms:play-services-mlkit-barcode-scanning:18.2.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\dfde8f034b51679985fc09924c6dc617\transformed\jetified-play-services-mlkit-barcode-scanning-18.2.0\AndroidManifest.xml:14:17-82
+127            <meta-data
+127-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\66bd106c250be9f02190d447f7a4703c\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
+128                android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar"
+128-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\66bd106c250be9f02190d447f7a4703c\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.mlkit:vision-common:17.3.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\66bd106c250be9f02190d447f7a4703c\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
+130            <meta-data
+130-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:20:13-22:85
+131                android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar"
+131-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:21:17-120
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:22:17-82
+133        </service>
+134
+135        <provider
+135-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:9:9-13:38
+136            android:name="com.google.mlkit.common.internal.MlKitInitProvider"
+136-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:10:13-78
+137            android:authorities="com.example.qr_reader.mlkitinitprovider"
+137-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:11:13-69
+138            android:exported="false"
+138-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:12:13-37
+139            android:initOrder="99" />
+139-->[com.google.mlkit:common:18.7.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\1eda5e83faa7eb78e7db9605f01a3e58\transformed\jetified-common-18.7.0\AndroidManifest.xml:13:13-35
+140
+141        <activity
+141-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+142            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+142-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+143            android:exported="false"
+143-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+144            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+144-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\781e5567158e59d38ee2b89930f9808b\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+145
+146        <meta-data
+146-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+147            android:name="com.google.android.gms.version"
+147-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+148            android:value="@integer/google_play_services_version" />
+148-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\58aa1384bde170d075503b845cfcf44c\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+149
+150        <service
+150-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:29:9-35:19
+151            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+151-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:30:13-103
+152            android:exported="false" >
+152-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:31:13-37
+153            <meta-data
+153-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:32:13-34:39
+154                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+154-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:33:17-94
+155                android:value="cct" />
+155-->[com.google.android.datatransport:transport-backend-cct:2.3.3] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\865800f069935b874f356d17af4d45b6\transformed\jetified-transport-backend-cct-2.3.3\AndroidManifest.xml:34:17-36
+156        </service>
+157        <service
+157-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:26:9-30:19
+158            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+158-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:27:13-117
+159            android:exported="false"
+159-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:28:13-37
+160            android:permission="android.permission.BIND_JOB_SERVICE" >
+160-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:29:13-69
+161        </service>
+162
+163        <receiver
+163-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:32:9-34:40
+164            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+164-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:33:13-132
+165            android:exported="false" />
+165-->[com.google.android.datatransport:transport-runtime:2.2.6] C:\Users\Ryuuzaki\.gradle\caches\transforms-3\8a86750eba43ba46ae6e646b43a84835\transformed\jetified-transport-runtime-2.2.6\AndroidManifest.xml:34:13-37
+166    </application>
+167
+168</manifest>
